@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<!-- 🔥 MOBILE VIEW FIX -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Degen Den Menu</title>
@@ -14,22 +12,44 @@
 
 body {
     margin: 0;
-    background: radial-gradient(circle at top, #1a1a1a 0%, #000 80%);
+    background: radial-gradient(circle at top, #111 0%, #000 80%);
     color: #eee;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 }
 
-/* subtle glow */
+/* animated glow */
 body::before {
     content: "";
     position: fixed;
+    width: 800px;
+    height: 800px;
     top: -200px;
     left: -200px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(212,175,55,0.08), transparent 70%);
+    background: radial-gradient(circle, rgba(212,175,55,0.12), transparent 70%);
+    animation: floatGlow 12s infinite alternate ease-in-out;
     z-index: 0;
+}
+
+@keyframes floatGlow {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(200px,150px); }
+}
+
+/* particles */
+.particle {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: rgba(212,175,55,0.4);
+    border-radius: 50%;
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+    from { transform: translateY(100vh); opacity: 0; }
+    10% { opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
 }
 
 .container {
@@ -37,146 +57,93 @@ body::before {
     z-index: 1;
     max-width: 720px;
     margin: auto;
-    padding: 50px 20px;
+    padding: 40px 18px;
 }
 
 /* HEADER */
-
 h1 {
     text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 42px;
+    font-size: 36px;
     letter-spacing: 3px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .subtitle {
     text-align: center;
     color: #aaa;
-    margin-bottom: 50px;
-    font-size: 13px;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.live-text {
+    text-align: center;
+    font-size: 11px;
+    color: #d4af37;
+    margin-bottom: 25px;
     letter-spacing: 1px;
 }
 
 /* SECTION */
-
 .section-title {
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin-top: 40px;
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    letter-spacing: 1px;
+    font-size: 18px;
     color: #d4af37;
 }
 
-.section-title::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 2px;
-    background: #d4af37;
-    margin-top: 6px;
-}
-
 /* DRINK CARD */
-
 .drink {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    padding: 16px 18px;
-    border-radius: 14px;
+    padding: 16px;
+    margin-top: 12px;
+    border-radius: 16px;
 
-    background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(12px);
 
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.06);
 
-    transition: all 0.25s ease;
+    transition: all 0.3s ease;
+}
+
+.drink:active {
+    transform: scale(0.97);
 }
 
 .drink:hover {
-    transform: translateY(-3px) scale(1.01);
-    border: 1px solid rgba(212,175,55,0.3);
-    box-shadow: 0 0 20px rgba(212,175,55,0.1);
+    border: 1px solid rgba(212,175,55,0.4);
+    box-shadow: 0 0 25px rgba(212,175,55,0.15);
 }
 
-/* TEXT */
-
 .name {
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 16px;
 }
 
 .desc {
     font-size: 12px;
     color: #888;
-    margin-top: 4px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
-/* PRICE */
+.drink.active .desc {
+    max-height: 40px;
+    margin-top: 6px;
+}
 
 .price {
     color: #d4af37;
     font-weight: 600;
-    font-size: 15px;
 }
-
-/* DIVIDER */
-
-.section-divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, #333, transparent);
-    margin: 40px 0;
-}
-
-/* FOOTER */
 
 .footer {
     text-align: center;
-    margin-top: 60px;
-    font-size: 11px;
+    margin-top: 50px;
+    font-size: 10px;
     color: #555;
-    letter-spacing: 1px;
-}
-
-/* 📱 MOBILE OPTIMIZATION */
-
-@media (max-width: 600px) {
-
-    .container {
-        padding: 30px 15px;
-    }
-
-    h1 {
-        font-size: 30px;
-    }
-
-    .subtitle {
-        font-size: 12px;
-        margin-bottom: 30px;
-    }
-
-    .section-title {
-        font-size: 18px;
-    }
-
-    .drink {
-        padding: 14px;
-    }
-
-    .name {
-        font-size: 16px;
-    }
-
-    .desc {
-        font-size: 11px;
-    }
-
-    .price {
-        font-size: 14px;
-    }
 }
 
 </style>
@@ -188,6 +155,7 @@ h1 {
 
 <h1>🍸 Degen’s Den</h1>
 <div class="subtitle">Cocktails • Late Nights • Questionable Decisions</div>
+<div class="live-text" id="typing"></div>
 
 <div class="section-title">Signature Cocktails</div>
 
@@ -242,13 +210,10 @@ h1 {
 <div class="drink">
   <div>
     <div class="name">House Martini</div>
-    <div class="desc">Mystery!</div>
+    <div class="desc">Mystery 👀</div>
   </div>
   <div class="price">$0</div>
 </div>
-
-
-<div class="section-divider"></div>
 
 <div class="section-title">Shots</div>
 
@@ -276,7 +241,6 @@ h1 {
   <div class="price">$0</div>
 </div>
 
-
 <div class="drink">
   <div>
     <div class="name">Rum Shot</div>
@@ -284,8 +248,6 @@ h1 {
   </div>
   <div class="price">$0</div>
 </div>
-
-<div class="section-divider"></div>
 
 <div class="section-title">🔥 House Special</div>
 
@@ -302,6 +264,39 @@ SCAN • SIP • ENJOY
 </div>
 
 </div>
+
+<script>
+
+/* particles */
+for (let i = 0; i < 25; i++) {
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (5 + Math.random() * 10) + "s";
+    p.style.opacity = Math.random();
+    document.body.appendChild(p);
+}
+
+/* expand drinks */
+document.querySelectorAll(".drink").forEach(drink => {
+    drink.addEventListener("click", () => {
+        drink.classList.toggle("active");
+    });
+});
+
+/* typing effect */
+const text = "NOW POURING...";
+let i = 0;
+function type() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 60);
+    }
+}
+type();
+
+</script>
 
 </body>
 </html>
