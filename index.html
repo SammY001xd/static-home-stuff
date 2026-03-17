@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<!-- 🔥 MOBILE VIEW FIX -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Degen Den Menu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    background: radial-gradient(circle at top, #1a1a1a 0%, #000 80%);
+    color: #eee;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* subtle glow */
+body::before {
+    content: "";
+    position: fixed;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,175,55,0.08), transparent 70%);
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+/* HEADER */
+
+h1 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 50px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* SECTION */
+
+.section-title {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #d4af37;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #d4af37;
+    margin-top: 6px;
+}
+
+/* DRINK CARD */
+
+.drink {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 16px 18px;
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255,255,255,0.05);
+
+    transition: all 0.25s ease;
+}
+
+.drink:hover {
+    transform: translateY(-3px) scale(1.01);
+    border: 1px solid rgba(212,175,55,0.3);
+    box-shadow: 0 0 20px rgba(212,175,55,0.1);
+}
+
+/* TEXT */
+
+.name {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.desc {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* PRICE */
+
+.price {
+    color: #d4af37;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* DIVIDER */
+
+.section-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #333, transparent);
+    margin: 40px 0;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+/* 📱 MOBILE OPTIMIZATION */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 30px 15px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .drink {
+        padding: 14px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .desc {
+        font-size: 11px;
+    }
+
+    .price {
+        font-size: 14px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🍸 Degen’s Den</h1>
+<div class="subtitle">Cocktails • Late Nights • Questionable Decisions</div>
+
+<div class="section-title">Signature Cocktails</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Classic Mojito</div>
+    <div class="desc">White rum, mint, lime</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Classic Margarita</div>
+    <div class="desc">Patrón Silver, lime, triple sec</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Long Island Iced Tea</div>
+    <div class="desc">Vodka, rum, gin, tequila, triple sec</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Dirty Shirley</div>
+    <div class="desc">Vodka, grenadine, lemon-lime soda</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Salty Dog</div>
+    <div class="desc">Vodka, grapefruit juice</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Tom Collins</div>
+    <div class="desc">Gin, lemon juice, simple syrup, soda water</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="drink">
+  <div>
+    <div class="name">House Martini</div>
+    <div class="desc">Mystery!</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+
+<div class="section-divider"></div>
+
+<div class="section-title">Shots</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Vodka Shot</div>
+    <div class="desc">Clean and smooth</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Black Label Shot</div>
+    <div class="desc">Deep, smoky Scotch</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Gin Shot</div>
+    <div class="desc">Crisp botanical finish</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+
+<div class="drink">
+  <div>
+    <div class="name">Rum Shot</div>
+    <div class="desc">Rich, tropical flavor</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="section-title">🔥 House Special</div>
+
+<div class="drink">
+  <div>
+    <div class="name">Degen’s Bahama Mama</div>
+    <div class="desc">Rum blend, pineapple, citrus twist</div>
+  </div>
+  <div class="price">$0</div>
+</div>
+
+<div class="footer">
+SCAN • SIP • ENJOY
+</div>
+
+</div>
+
+</body>
+</html>
