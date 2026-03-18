@@ -41,7 +41,7 @@ body::before {
     100% { transform: translate(0,0); }
 }
 
-/* particles */
+/* ✨ PARTICLES */
 .particle {
     position: fixed;
     width: 2px;
@@ -57,13 +57,13 @@ body::before {
     to { transform: translateY(-10vh); }
 }
 
-/* container FIXED */
+/* container */
 .container {
     position: relative;
     z-index: 1;
     max-width: 720px;
     margin: auto;
-    padding: 10px 18px 40px; /* 🔥 reduced top padding */
+    padding: 10px 18px 40px;
 }
 
 /* HERO */
@@ -78,7 +78,7 @@ body::before {
     margin: 0;
 }
 
-/* pouring */
+/* 🍸 PREMIUM POUR */
 .pour-container {
     display: flex;
     justify-content: center;
@@ -86,49 +86,101 @@ body::before {
 }
 
 .glass {
-    width: 60px;
-    height: 80px;
+    width: 70px;
+    height: 90px;
     border: 2px solid rgba(255,255,255,0.2);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 8px 8px 14px 14px;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(6px);
 }
 
 .liquid {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 0%;
-    background: linear-gradient(to top, #d4af37, rgba(212,175,55,0.7));
-    animation: fillDrink 3s ease-in-out infinite;
+    height: 65%;
+    background: linear-gradient(to top, #caa23a, #f1d77a);
+    overflow: hidden;
 }
 
-.liquid::before {
-    content: "";
+/* wave */
+.wave {
     position: absolute;
-    top: -20px;
+    top: -10px;
+    width: 200%;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    animation: waveMove 3s infinite linear;
+}
+
+.bubbles span {
+    position: absolute;
+    bottom: 0;
+    width: 4px;
+    height: 4px;
+    background: rgba(253, 0, 0, 0.6);
+    border-radius: 50%;
+    animation: bubbleRise 0.1s infinite ease-in;
+}
+
+/* RANDOM POSITIONS + TIMING */
+.bubbles span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.bubbles span:nth-child(2) { left: 25%; animation-delay: 0.5s; }
+.bubbles span:nth-child(3) { left: 40%; animation-delay: 1s; }
+.bubbles span:nth-child(4) { left: 55%; animation-delay: 1.5s; }
+.bubbles span:nth-child(5) { left: 70%; animation-delay: 2s; }
+.bubbles span:nth-child(6) { left: 85%; animation-delay: 2.5s; }
+
+.bubbles span:nth-child(odd) {
+    width: 3px;
+    height: 3px;
+    animation-duration: 2.5s;
+}
+
+.bubbles span:nth-child(even) {
+    width: 5px;
+    height: 5px;
+    animation-duration: 3.5s;
+}
+
+.bubbles::after {
+    left: 60%;
+    animation-delay: 1s;
+}
+
+/* pouring stream */
+.stream {
+    position: absolute;
+    top: -100px;
     left: 50%;
     width: 4px;
-    height: 20px;
-    background: #d4af37;
+    height: 25px;
+    background: linear-gradient(to bottom, #f1d77a, #caa23a);
     transform: translateX(-50%);
-    animation: pourStream 1s linear infinite;
+    animation: streamFlow 0.8s infinite;
 }
 
-@keyframes fillDrink {
-    0% { height: 0%; }
-    50% { height: 80%; }
-    100% { height: 0%; }
+/* animations */
+@keyframes waveMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-@keyframes pourStream {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
+@keyframes bubbleRise {
+    0% { transform: translateY(0); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(-40px); opacity: 0; }
 }
 
-/* main title */
+@keyframes streamFlow {
+    0% { opacity: 0.4; transform: translateX(-50%) scaleY(0.8); }
+    50% { opacity: 1; transform: translateX(-50%) scaleY(1.2); }
+    100% { opacity: 0.4; transform: translateX(-50%) scaleY(0.8); }
+}
+
+/* title */
 h1 {
     text-align: center;
     font-family: 'Playfair Display', serif;
@@ -211,7 +263,18 @@ h1 {
 
   <div class="pour-container">
     <div class="glass">
-      <div class="liquid"></div>
+      <div class="liquid">
+        <div class="wave"></div>
+<div class="bubbles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+      </div>
+      <div class="stream"></div>
     </div>
   </div>
 
@@ -232,9 +295,8 @@ h1 {
 <div class="drink"><div class="row"><div class="name">House Martini</div><div class="price">$0</div></div><div class="desc">Mystery 👀</div></div>
 <div class="drink"><div class="row"><div class="name">Gin & Tonic</div><div class="price">$0</div></div><div class="desc">Gin, tonic water</div></div>
 <div class="drink"><div class="row"><div class="name">Cuba Libre</div><div class="price">$0</div></div><div class="desc">Rum, cola</div></div>
-<div class="drink"><div class="row"><div class="name">Godfather</div><div class="price">$0</div></div><div class="desc">Scotch and amaretto </div></div>
-<div class="drink"><div class="row"><div class="name">Korean Yakult Soju</div><div class="price">$0</div></div><div class="desc">Like the name!</div></div>
-
+<div class="drink"><div class="row"><div class="name">Godfather</div><div class="price">$0</div></div><div class="desc">Scotch and amaretto</div></div>
+<div class="drink"><div class="row"><div class="name">Korean Yakult Soju</div><div class="price">$0</div></div><div class="desc">Sprite, Yakult, Soju</div></div>
 
 <div class="section-title">Shots</div>
 
@@ -251,8 +313,6 @@ h1 {
 <div class="drink"><div class="row"><div class="name">Corona</div><div class="price">$0</div></div><div class="desc">Light and refreshing</div></div>
 <div class="drink"><div class="row"><div class="name">Heineken</div><div class="price">$0</div></div><div class="desc">Crisp and balanced</div></div>
 
-
-
 <div class="section-title">👴For Da Unc's</div>
 <div class="drink"><div class="row"><div class="name">एक पेग व्हिस्की (30ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div></div>
 <div class="drink"><div class="row"><div class="name">दुई पेग व्हिस्की (60ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div></div>
@@ -260,15 +320,13 @@ h1 {
 <div class="drink"><div class="row"><div class="name">चार पेग व्हिस्की (120ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div></div>
 <div class="drink"><div class="row"><div class="name">पाँच पेग व्हिस्की (150ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div></div>
 
-<div class="section-title"> 
-🙄🤓Driver’s Menu (Non-Alcoholic) </div>
-<div class="drink"><div class="row"><div class="name">Sherly Temple</div><div class="price">$0</div></div><div class="desc">Grenadine, lemon-lime soda</div></div>
+<div class="section-title">🙄🤓Driver’s Menu (Non-Alcoholic)</div>
+<div class="drink"><div class="row"><div class="name">Shirley Temple</div><div class="price">$0</div></div><div class="desc">Grenadine, lemon-lime soda</div></div>
 <div class="drink"><div class="row"><div class="name">Coke, Sprite, or Fanta</div><div class="price">$0</div></div><div class="desc">Your choice of soda</div></div>
 <div class="drink"><div class="row"><div class="name">Mocktail Margarita</div><div class="price">$0</div></div><div class="desc">Tropical fruit blend with a citrus twist</div></div>
 <div class="drink"><div class="row"><div class="name">Ask Bartender for a Custom Non-Alcoholic Drink</div><div class="price">$0</div></div><div class="desc">From Any of the Alcoholic drinks above</div></div>
 
 <div class="section-title">🔥 House Special</div>
-
 <div class="drink"><div class="row"><div class="name">Degen’s Bahama Mama</div><div class="price">$0</div></div><div class="desc">Rum blend, pineapple, citrus twist</div></div>
 
 <div class="footer">SCAN • SIP • ENJOY</div>
