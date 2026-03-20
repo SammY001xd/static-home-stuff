@@ -125,7 +125,7 @@ body::before {
     animation: bubbleRise 0.1s infinite ease-in;
 }
 
-/* RANDOM POSITIONS + TIMING */
+/* RANDOM POSITIONS */
 .bubbles span:nth-child(1) { left: 10%; animation-delay: 0s; }
 .bubbles span:nth-child(2) { left: 25%; animation-delay: 0.5s; }
 .bubbles span:nth-child(3) { left: 40%; animation-delay: 1s; }
@@ -143,11 +143,6 @@ body::before {
     width: 5px;
     height: 5px;
     animation-duration: 3.5s;
-}
-
-.bubbles::after {
-    left: 60%;
-    animation-delay: 1s;
 }
 
 /* pouring stream */
@@ -182,7 +177,6 @@ body::before {
 
 /* title */
 .hero h1 {
-    text-align: center;
     font-family: 'Playfair Display', serif;
     font-size: 36px;
     margin: 0;
@@ -192,7 +186,6 @@ body::before {
     text-align: center;
     font-family: 'Playfair Display', serif;
     font-size: 20px;
-    margin: 0;
     color: gold;
     margin-top: 20px;
 }
@@ -232,13 +225,8 @@ body::before {
     justify-content: space-between;
 }
 
-.name {
-    font-size: 16px;
-}
-
-.price {
-    color: gold;
-}
+.name { font-size: 16px; }
+.price { color: gold; }
 
 .desc {
     max-height: 0;
@@ -251,6 +239,18 @@ body::before {
 .drink.active .desc {
     max-height: 50px;
     margin-top: 6px;
+}
+
+/* 🔥 ORDER BUTTON */
+.order-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(45deg,#d4af37,#f1d77a);
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .footer {
@@ -274,14 +274,10 @@ body::before {
     <div class="glass">
       <div class="liquid">
         <div class="wave"></div>
-<div class="bubbles">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+        <div class="bubbles">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
       </div>
       <div class="stream"></div>
     </div>
@@ -294,51 +290,51 @@ body::before {
 
 <div class="section-title">Signature Cocktails</div>
 
-<div class="drink"><div class="row"><div class="name">Classic Mojito</div><div class="price">$0</div></div><div class="desc">White rum, mint, lime</div></div>
-<div class="drink"><div class="row"><div class="name">Classic Margarita</div><div class="price">$0</div></div><div class="desc">Patrón Silver, lime, triple sec</div></div>
-<div class="drink"><div class="row"><div class="name">Strawberry Margarita</div><div class="price">$0</div></div><div class="desc">Patrón Silver, strawberries, lime</div></div>
-<div class="drink"><div class="row"><div class="name">Bloody Mary</div><div class="price">$0</div></div><div class="desc">Vodka, tomato juice, lemon juice</div></div>
-<div class="drink"><div class="row"><div class="name">Long Island Iced Tea</div><div class="price">$0</div></div><div class="desc">Vodka, rum, gin, tequila, triple sec</div></div>
-<div class="drink"><div class="row"><div class="name">Dirty Shirley</div><div class="price">$0</div></div><div class="desc">Vodka, grenadine, lemon-lime soda</div></div>
-<div class="drink"><div class="row"><div class="name">Salty Dog</div><div class="price">$0</div></div><div class="desc">Vodka, grapefruit juice</div></div>
-<div class="drink"><div class="row"><div class="name">Tom Collins</div><div class="price">$0</div></div><div class="desc">Gin, lemon juice, simple syrup, soda water</div></div>
-<div class="drink"><div class="row"><div class="name">House Martini</div><div class="price">$0</div></div><div class="desc">Mystery 👀</div></div>
-<div class="drink"><div class="row"><div class="name">Gin & Tonic</div><div class="price">$0</div></div><div class="desc">Gin, tonic water</div></div>
-<div class="drink"><div class="row"><div class="name">Cuba Libre</div><div class="price">$0</div></div><div class="desc">Rum, cola</div></div>
-<div class="drink"><div class="row"><div class="name">Godfather</div><div class="price">$0</div></div><div class="desc">Scotch and amaretto</div></div>
+<div class="drink"><div class="row"><div class="name">Classic Mojito</div><div class="price">$0</div></div><div class="desc">White rum, mint, lime</div><button class="order-btn" onclick="orderDrink('Classic Mojito')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Classic Margarita</div><div class="price">$0</div></div><div class="desc">Patrón Silver, lime, triple sec</div><button class="order-btn" onclick="orderDrink('Classic Margarita')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Strawberry Margarita</div><div class="price">$0</div></div><div class="desc">Patrón Silver, strawberries, lime</div><button class="order-btn" onclick="orderDrink('Strawberry Margarita')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Bloody Mary</div><div class="price">$0</div></div><div class="desc">Vodka, tomato juice, lemon juice</div><button class="order-btn" onclick="orderDrink('Bloody Mary')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Long Island Iced Tea</div><div class="price">$0</div></div><div class="desc">Vodka, rum, gin, tequila, triple sec</div><button class="order-btn" onclick="orderDrink('Long Island Iced Tea')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Dirty Shirley</div><div class="price">$0</div></div><div class="desc">Vodka, grenadine, lemon-lime soda</div><button class="order-btn" onclick="orderDrink('Dirty Shirley')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Salty Dog</div><div class="price">$0</div></div><div class="desc">Vodka, grapefruit juice</div><button class="order-btn" onclick="orderDrink('Salty Dog')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Tom Collins</div><div class="price">$0</div></div><div class="desc">Gin, lemon juice, simple syrup, soda water</div><button class="order-btn" onclick="orderDrink('Tom Collins')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">House Martini</div><div class="price">$0</div></div><div class="desc">Mystery 👀</div><button class="order-btn" onclick="orderDrink('House Martini')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Gin & Tonic</div><div class="price">$0</div></div><div class="desc">Gin, tonic water</div><button class="order-btn" onclick="orderDrink('Gin & Tonic')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Cuba Libre</div><div class="price">$0</div></div><div class="desc">Rum, cola</div><button class="order-btn" onclick="orderDrink('Cuba Libre')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Godfather</div><div class="price">$0</div></div><div class="desc">Scotch and amaretto</div><button class="order-btn" onclick="orderDrink('Godfather')">Order</button></div>
 
 <div class="section-title">Shots</div>
 
-<div class="drink"><div class="row"><div class="name">Tequila Shot</div><div class="price">$0</div></div><div class="desc">Silver Patron</div></div>
-<div class="drink"><div class="row"><div class="name">Vodka Shot</div><div class="price">$0</div></div><div class="desc">Clean and smooth</div></div>
-<div class="drink"><div class="row"><div class="name">Black Label Shot</div><div class="price">$0</div></div><div class="desc">Deep, smoky Scotch</div></div>
-<div class="drink"><div class="row"><div class="name">Gin Shot</div><div class="price">$0</div></div><div class="desc">Crisp botanical finish</div></div>
-<div class="drink"><div class="row"><div class="name">Rum Shot</div><div class="price">$0</div></div><div class="desc">Rich, tropical flavor</div></div>
-<div class="drink"><div class="row"><div class="name">Lemon Drop Shot</div><div class="price">$0</div></div><div class="desc">Candy-coated citrus explosion</div></div>
-<div class="drink"><div class="row"><div class="name">Screwdriver Shot</div><div class="price">$0</div></div><div class="desc">Vodka, orange juice</div></div>
-<div class="drink"><div class="row"><div class="name">Soju Shot</div><div class="price">$0</div></div><div class="desc">Korean rice alcohol</div></div>
+<div class="drink"><div class="row"><div class="name">Tequila Shot</div><div class="price">$0</div></div><div class="desc">Silver Patron</div><button class="order-btn" onclick="orderDrink('Tequila Shot')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Vodka Shot</div><div class="price">$0</div></div><div class="desc">Clean and smooth</div><button class="order-btn" onclick="orderDrink('Vodka Shot')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Black Label Shot</div><div class="price">$0</div></div><div class="desc">Deep, smoky Scotch</div><button class="order-btn" onclick="orderDrink('Black Label Shot')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Gin Shot</div><div class="price">$0</div></div><div class="desc">Crisp botanical finish</div><button class="order-btn" onclick="orderDrink('Gin Shot')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Rum Shot</div><div class="price">$0</div></div><div class="desc">Rich, tropical flavor</div><button class="order-btn" onclick="orderDrink('Rum Shot')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Lemon Drop Shot</div><div class="price">$0</div></div><div class="desc">Candy-coated citrus explosion</div><button class="order-btn" onclick="orderDrink('Lemon Drop Shot')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Screwdriver Shot</div><div class="price">$0</div></div><div class="desc">Vodka, orange juice</div><button class="order-btn" onclick="orderDrink('Screwdriver Shot')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Soju Shot</div><div class="price">$0</div></div><div class="desc">Korean rice alcohol</div><button class="order-btn" onclick="orderDrink('Soju Shot')">Order</button></div>
 
 <div class="section-title">🍻🍺 Beer</div>
-<div class="drink"><div class="row"><div class="name">Corona</div><div class="price">$0</div></div><div class="desc">Light and refreshing</div></div>
-<div class="drink"><div class="row"><div class="name">Heineken</div><div class="price">$0</div></div><div class="desc">Crisp and balanced</div></div>
+<div class="drink"><div class="row"><div class="name">Corona</div><div class="price">$0</div></div><div class="desc">Light and refreshing</div><button class="order-btn" onclick="orderDrink('Corona')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Heineken</div><div class="price">$0</div></div><div class="desc">Crisp and balanced</div><button class="order-btn" onclick="orderDrink('Heineken')">Order</button></div>
 
 <div class="section-title">👴For Da Unc's  (Ask for Black Label or Blue Label, or any other scotch!)</div>
-<div class="drink"><div class="row"><div class="name">एक पेग व्हिस्की (30ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div></div>
-<div class="drink"><div class="row"><div class="name">दुई पेग व्हिस्की (60ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div></div>
-<div class="drink"><div class="row"><div class="name">तीन पेग व्हिस्की (90ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div></div>
-<div class="drink"><div class="row"><div class="name">चार पेग व्हिस्की (120ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div></div>
-<div class="drink"><div class="row"><div class="name">पाँच पेग व्हिस्की (150ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div></div>
+<div class="drink"><div class="row"><div class="name">एक पेग व्हिस्की (30ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div><button class="order-btn" onclick="orderDrink('एक पेग व्हिस्की')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">दुई पेग व्हिस्की (60ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div><button class="order-btn" onclick="orderDrink('दुई पेग व्हिस्की')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">तीन पेग व्हिस्की (90ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div><button class="order-btn" onclick="orderDrink('तीन पेग व्हिस्की')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">चार पेग व्हिस्की (120ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div><button class="order-btn" onclick="orderDrink('चार पेग व्हिस्की')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">पाँच पेग व्हिस्की (150ml)</div><div class="price">$0</div></div><div class="desc">Scotch</div><button class="order-btn" onclick="orderDrink('पाँच पेग व्हिस्की')">Order</button></div>
 
 <div class="section-title">🙄🤓Driver’s Menu (Non-Alcoholic)</div>
-<div class="drink"><div class="row"><div class="name">Shirley Temple</div><div class="price">$0</div></div><div class="desc">Grenadine, lemon-lime soda</div></div>
-<div class="drink"><div class="row"><div class="name">Coke, Sprite, or Fanta</div><div class="price">$0</div></div><div class="desc">Your choice of soda</div></div>
-<div class="drink"><div class="row"><div class="name">Mocktail Margarita</div><div class="price">$0</div></div><div class="desc">Tropical fruit blend with a citrus twist</div></div>
-<div class="drink"><div class="row"><div class="name">Ask Bartender for a Custom Non-Alcoholic Drink</div><div class="price">$0</div></div><div class="desc">From Any of the Alcoholic drinks above</div></div>
+<div class="drink"><div class="row"><div class="name">Shirley Temple</div><div class="price">$0</div></div><div class="desc">Grenadine, lemon-lime soda</div><button class="order-btn" onclick="orderDrink('Shirley Temple')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Coke, Sprite, or Fanta</div><div class="price">$0</div></div><div class="desc">Your choice of soda</div><button class="order-btn" onclick="orderDrink('Soda')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Mocktail Margarita</div><div class="price">$0</div></div><div class="desc">Tropical fruit blend with a citrus twist</div><button class="order-btn" onclick="orderDrink('Mocktail Margarita')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Ask Bartender for a Custom Non-Alcoholic Drink</div><div class="price">$0</div></div><div class="desc">From Any of the Alcoholic drinks above</div><button class="order-btn" onclick="orderDrink('Custom Drink')">Order</button></div>
 
 <div class="section-title">🔥 House Special</div>
 <h1 class="section-heading">For the Den</h1>
-<div class="drink"><div class="row"><div class="name">Degen’s Bahama Mama</div><div class="price">$0</div></div><div class="desc">Rum blend, pineapple, citrus twist</div></div>
-<div class="drink"><div class="row"><div class="name">Korean Yakult Soju</div><div class="price">$0</div></div><div class="desc">Sprite, Yakult, Soju</div></div>
+<div class="drink"><div class="row"><div class="name">Degen’s Bahama Mama</div><div class="price">$0</div></div><div class="desc">Rum blend, pineapple, citrus twist</div><button class="order-btn" onclick="orderDrink('Degen’s Bahama Mama')">Order</button></div>
+<div class="drink"><div class="row"><div class="name">Korean Yakult Soju</div><div class="price">$0</div></div><div class="desc">Sprite, Yakult, Soju</div><button class="order-btn" onclick="orderDrink('Korean Yakult Soju')">Order</button></div>
 
 <div class="footer">SCAN • SIP • ENJOY</div>
 
@@ -360,6 +356,34 @@ document.querySelectorAll(".drink").forEach(d=>{
  d.addEventListener("click",()=>d.classList.toggle("active"));
 });
 
+</script>
+
+<!-- 🔥 FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_KEY",
+  authDomain: "YOUR_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.orderDrink = async function(drink) {
+    const name = prompt("Enter your name:");
+    if (!name) return;
+
+    await addDoc(collection(db, "orders"), {
+        name,
+        drink,
+        time: new Date()
+    });
+
+    alert("🔥 Order sent!");
+};
 </script>
 
 </body>
